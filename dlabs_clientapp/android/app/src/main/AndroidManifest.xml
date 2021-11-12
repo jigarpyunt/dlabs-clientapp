@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dlabs_clientapp">
    <application
-        android:label="dlabs_clientapp"
+        android:label="Dlabs Client"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
