@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red      
+      color: Colors.red,
+      child: const Image(image: AssetImage('assets/images/applogo3x.png')),      
     );
   }
 }
