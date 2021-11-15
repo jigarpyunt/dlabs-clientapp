@@ -1,4 +1,4 @@
-import 'package:dlabs_clientapp/screens/register_screen.dart';
+import 'package:dlabs_clientapp/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dlabs_clientapp/algorithms/responsive.dart';
 import 'package:dlabs_clientapp/constants.dart';
@@ -6,34 +6,27 @@ import 'package:dlabs_clientapp/widgets/template_widget.dart';
 import 'package:dlabs_clientapp/widgets/input_widget.dart';
 import 'package:dlabs_clientapp/widgets/primary_button_widget.dart';
 
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({ Key? key }) : super(key: key);
-
-  static String pageId = 'login_screen';
+  static String pageId = 'register_screen';
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   bool isInput1Focused = true;
   bool isInput2Focused = false;
+  bool isInput3Focused = false;
+  bool isInput4Focused = false;
   bool isPasswordVisible = false;
-
-
-  
   @override
   Widget build(BuildContext context) {
-    Responsive responsiveCalc = Responsive();
-    // responsiveCalc.setDeviceDimensions(width: window.physicalSize.width, height: window.physicalSize.height);
-    responsiveCalc.setDeviceDimensions(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height);
-        
     return Template(
       template: Container(
-        constraints: BoxConstraints(minHeight:  MediaQuery.of(context).size.height),
+        constraints:
+            BoxConstraints(minHeight: MediaQuery.of(context).size.height),
         decoration: kBackgroundLinearGradientDecoration,
         padding: EdgeInsets.symmetric(
           horizontal: 30 * Responsive.differenceWidth,
@@ -68,35 +61,87 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 140 * Responsive.differenceHeight),
+              SizedBox(height: 80 * Responsive.differenceHeight),
               GestureDetector(
                 onTap: () {
-                    setState(() {
-                      isInput1Focused = true;
-                      isInput2Focused = false;
-                    });
-                },
-                child: PrimaryInput(
-                  labelText: "Registered Mobile",
-                  hintText: "Type in your mobile",
-                  isFocused: isInput1Focused,
-                  onTap: (){
-                    setState(() {
-                      isInput1Focused = true;
-                      isInput2Focused = false;
-                    });
-                  }
-                ),
-              ),
-              GestureDetector(
-                onTap: (){
-                  setState((){
-                    isInput1Focused = false;
-                    isInput2Focused = true;
+                  setState(() {
+                    isInput1Focused = true;
+                    isInput2Focused = false;
+                    isInput3Focused = false;
+                    isInput4Focused = false;
                   });
                 },
                 child: PrimaryInput(
-                  labelText: "Password",
+                  labelText: "Full Name",
+                  hintText: "Type in your full name",
+                  isFocused: isInput1Focused,
+                  onTap: () {
+                    setState(() {
+                      isInput1Focused = true;
+                      isInput2Focused = false;
+                      isInput3Focused = false;
+                      isInput4Focused = false;
+                    });
+                  },
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isInput1Focused = false;
+                    isInput2Focused = true;
+                    isInput3Focused = false;
+                    isInput4Focused = false;
+                  });
+                },
+                child: PrimaryInput(
+                  labelText: "Mobile",
+                  hintText: "Type in your mobile",
+                  isFocused: isInput2Focused,
+                  onTap: () {
+                    setState(() {
+                      isInput1Focused = false;
+                      isInput2Focused = true;
+                      isInput3Focused = false;
+                      isInput4Focused = false;
+                    });
+                  },
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isInput1Focused = false;
+                    isInput2Focused = false;
+                    isInput3Focused = true;
+                    isInput4Focused = false;
+                  });
+                },
+                child: PrimaryInput(
+                  labelText: "Email",
+                  hintText: "Type in your valid email",
+                  isFocused: isInput3Focused,
+                  onTap: () {
+                    setState(() {
+                      isInput1Focused = false;
+                      isInput2Focused = false;
+                      isInput3Focused = true;
+                      isInput4Focused = false;
+                    });
+                  },
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isInput1Focused = false;
+                    isInput2Focused = false;
+                    isInput3Focused = false;
+                    isInput4Focused = true;
+                  });
+                },
+                child: PrimaryInput(
+                  labelText:  "Create a strong passsword",
                   hintText: "Type in your secret password",
                   isFocused: isInput2Focused,
                   isObscureText: !isPasswordVisible,
@@ -114,7 +159,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     setState(() {
                       isInput1Focused = false;
-                      isInput2Focused = true;
+                      isInput2Focused = false;
+                      isInput3Focused = false;
+                      isInput4Focused = true;
                     });
                   },
                 ),
@@ -124,14 +171,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const PrimaryButton(text: 'Log In'),
+                    const PrimaryButton(text: 'Next'),
                     SizedBox(
-                      height: 20 * Responsive.differenceHeight,
+                      height: 15 * Responsive.differenceHeight,
                     ),
                     Row(
                       children: <Widget>[
                         Text(
-                          'Forgot Password?',
+                          'If you already a user ?',
                           style: kGeneralLinksTextDecoration,
                         ),
                         SizedBox(
@@ -139,31 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, RegisterScreen.pageId);
-                          },
-                          child: Text(
-                            'Click here',
-                            style: kGeneralLinksTextDecoration.copyWith(
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20 * Responsive.differenceHeight,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          'If you are new user ?',
-                          style: kGeneralLinksTextDecoration,
-                        ),
-                        SizedBox(
-                          width: 5 * Responsive.differenceWidth,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, RegisterScreen.pageId);
+                            Navigator.pushNamed(context, LoginScreen.pageId);
                           },
                           child: Text(
                             'Click here',

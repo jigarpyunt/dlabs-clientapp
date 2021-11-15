@@ -4,14 +4,23 @@ import 'package:dlabs_clientapp/constants.dart';
 
 class PrimaryInput extends StatefulWidget {
   const PrimaryInput(
-      {Key? key, required this.labelText, required this.hintText, required this.isFocused, required this.onTap })
+      {Key? key,
+      required this.labelText,
+      required this.hintText,
+      required this.isFocused,
+      required this.onTap,
+      this.trailIcon = false,
+      this.isObscureText = false,
+      }
+      )
       : super(key: key);
 
   final String labelText;
   final String hintText;
   final bool isFocused;
   final dynamic onTap;
-
+  final dynamic trailIcon;
+  final bool isObscureText;
 
   @override
   _PrimaryInputState createState() => _PrimaryInputState();
@@ -19,7 +28,7 @@ class PrimaryInput extends StatefulWidget {
 
 class _PrimaryInputState extends State<PrimaryInput> {
   late FocusNode myFocusNode;
-  
+
   @override
   void initState() {
     super.initState();
@@ -47,7 +56,11 @@ class _PrimaryInputState extends State<PrimaryInput> {
       // margin: EdgeInsets.only(bottom: 20 * Responsive.differenceHeight),
 
       constraints: BoxConstraints(minHeight: 83 * Responsive.differenceHeight),
-      decoration: widget.isFocused == true ? kInputBoxDecoration.copyWith(color: const Color.fromRGBO(255, 255, 255, 0.16),) : kInputBoxDecoration,
+      decoration: widget.isFocused == true
+          ? kInputBoxDecoration.copyWith(
+              color: const Color.fromRGBO(255, 255, 255, 0.16),
+            )
+          : kInputBoxDecoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -58,7 +71,11 @@ class _PrimaryInputState extends State<PrimaryInput> {
           // SizedBox(height: 10 * Responsive.differenceHeight),
           TextField(
             style: kPrimaryInputTextDecoration,
-            decoration: kPrimaryInputDecoration.copyWith(hintText: widget.hintText),
+            obscureText: widget.isObscureText,
+            decoration: kPrimaryInputDecoration.copyWith(
+              hintText: widget.hintText,
+              suffixIcon: widget.trailIcon != false ? widget.trailIcon : const Icon(Icons.keyboard, color: Colors.transparent,),
+            ),
             focusNode: myFocusNode,
             onTap: widget.onTap,
           ),

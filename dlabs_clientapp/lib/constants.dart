@@ -110,7 +110,7 @@ EdgeInsets kCustomPaddingDecoration = EdgeInsets.only(
 
 TextStyle kGeneralLinksTextDecoration = TextStyle(
   fontFamily: 'Roboto',
-  fontSize: 12.0 * Responsive.differenceWidth,
+  fontSize: 14.0 * Responsive.differenceWidth,
   color: Colors.white,
   letterSpacing: 1.20 * Responsive.differenceWidth
 );
