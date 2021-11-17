@@ -205,16 +205,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             GestureDetector(
                               onTap: () {
                                 setState(() {
+                                  isNameInputFocused = false;
+                                  isMobileInputFocused = false;
                                   isEmailInputFocused = false;
-                                  isEmailInputFocused = false;
-                                  isEmailInputFocused = false;
-                                  isEmailInputFocused = true;
+                                  isPasswordInputFocused = true;
                                 });
                               },
                               child: PrimaryInput(
                                 labelText: "Create a strong passsword",
                                 hintText: "Type in your secret password",
-                                isFocused: isEmailInputFocused,
+                                isFocused: isPasswordInputFocused,
                                 isObscureText: !isPasswordVisible,
                                 trailIcon: GestureDetector(
                                   onTap: () {
@@ -231,10 +231,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 onTap: () {
                                   setState(() {
+                                    isNameInputFocused = false;
+                                    isMobileInputFocused = false;
                                     isEmailInputFocused = false;
-                                    isEmailInputFocused = false;
-                                    isEmailInputFocused = false;
-                                    isEmailInputFocused = true;
+                                    isPasswordInputFocused = true;
                                   });
                                 },
                               ),
@@ -302,7 +302,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   child: PrimaryInput(
                                     labelText: "Verify OTP",
                                     hintText: "Type in 6 digit otp",
-                                    isFocused: isNameInputFocused,
+                                    isFocused: isVerifyOTPInputFocused,
                                     onTap: () {
                                       setState(() {
                                         isVerifyOTPInputFocused = true;
