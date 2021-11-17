@@ -1,3 +1,4 @@
+import 'package:dlabs_clientapp/screens/forgot_password_screen.dart';
 import 'package:dlabs_clientapp/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dlabs_clientapp/algorithms/responsive.dart';
@@ -139,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, RegisterScreen.pageId);
+                            Navigator.pushNamed(context, ForgotPasswordScreen.pageId);
                           },
                           child: Text(
                             'Click here',
